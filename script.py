@@ -1,29 +1,33 @@
 #! /usr/bin/env python3
+
 import sys
 import numpy
 import argparse
 
-filename = open (sys.argv[*], 'r')
-for line in fin:
-    lines = line.rstrip('\n')
-    if line[0] == '>':
-       name = line
-       id.append(name)
-    else:
-       sequence += line
+filename = sys.argv[1]
 
-numberA = filename.count(A)
-numberC = filename.count(C)
-numberG = filename.count(G)
-numberT = filename.count(T)
+InFile = open(filename, 'r')
+
+numberA = 0
+numberC = 0
+numberG = 0
+numberT = 0
+
+for lines in InFile:
+	numberA += lines.count('A')
+	numberC += lines.count('C')
+	numberG += lines.count('G')
+	numberT += lines.count('T')
+
 total = numberA + numberC + numberG + numberT
 
-perA = numberA / total
-perC = numberC / total
-perG = numberG / total
-perT = numberT / total
+#print("A:", numberA, "C:", numberC, "G:", numberG, "T:", numberT)
 
-print(perA)
-print(perC)
-print(perG)
-print(perT)
+perA = (numberA / total)*100
+perC = (numberC / total)*100
+perG = (numberG / total)*100
+perT = (numberT / total)*100
+
+print("%A:", perA, "\n" "%C:", perC, "\n" "%G:", perG, "\n" "%T:", perT)
+
+InFile.close()
