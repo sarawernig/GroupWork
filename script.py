@@ -4,6 +4,13 @@ import numpy
 import argparse
 
 filename = open (sys.argv[*], 'r')
+for line in fin:
+    lines = line.rstrip('\n')
+    if line[0] == '>':
+       name = line
+       id.append(name)
+    else:
+       sequence += line
 
 numberA = filename.count(A)
 numberC = filename.count(C)
